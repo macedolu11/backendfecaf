@@ -10,23 +10,6 @@ const pool = new pg.Pool({
   }
 })
 
-app.route('/reset').get(
-  (req, res) => {
-    let dropCreatTable = "";
-    dropCreatTable += "DROP TABLE IF EXISTS lancamentos; ";
-    dropCreatTable += "CREATE TABLE lancamentos(";
-    dropCreatTable += "nome char(50), "
-    dropCreatTable += "sabor char(150), "
-    dropCreatTable += "tamanho char(130), "
-    dropCreatTable += "quantidade char(10) "
-    dropCreatTable += ");";
-
-    pool.query(dropCreatTable, (err, dbres) => {
-      console.log("Error: " + err)
-      console.log(dbres)
-      res.status(200).send("RESET!")
-    })
-  })
 
 
 const port = process.env.PORT || config.get("server.port");
@@ -64,7 +47,25 @@ app.route('/extrato').get(
   }
 )
 
+app.route('/reset').get(
+  (req, res) => {
+    let dropCreatTable = "";
+    dropCreatTable += "DROP TABLE IF EXISTS lancamentos; ";
+    dropCreatTable += "CREATE TABLE lancamentos(";
+    dropCreatTable += "nome char(50), "
+    dropCreatTable += "sabor char(150), "
+    dropCreatTable += "tamanho char(130), "
+    dropCreatTable += "quantidade char(10) "
+    dropCreatTable += ");";
 
+    pool.query(dropCreatTable, (err, dbres) => {
+      console.log("Error: " + err)
+      console.log(dbres)
+      res.status(200).send("RESET!")
+    });
+  });
+
+  
 app.route('/lancamento').get(
   (req, res) => {
     res.status(200).send("LANÇAMENTO")
