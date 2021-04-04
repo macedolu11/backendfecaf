@@ -30,7 +30,7 @@ const lancamentos = [
   }
 ]
 
-app.route('/extrato').get(
+app.route('/extrato').get( 
   (req, res) => {
     res.status(200).json(
         lancamentos
@@ -39,8 +39,14 @@ app.route('/extrato').get(
 )
 
 
+app.route('/lancamento').get(
+  (req, res) => {
+    res.status(200).write("LANÇAMENTO")
+  }
+)
+
+
 
 app.listen(port, () =>{
-  console.log("RATO AGUADO")
+  console.log("Servidor Iniciado")
 })
-console.log("Server Carapato")
