@@ -11,19 +11,22 @@ const app = express();
 app.set("port", port)
 const lancamentos = [
   {
-    data: '2021-03-10',
-    descricao: 'pagamento',
-    valor: 2500.00
+    nome: "LUCAS",
+    sabor: "Portuguesa",
+    tamanho: "5",
+    quantidade: 1
   },
   {
-    data: '2021-03-15',
-    descricao: 'mercado',
-    valor: 2500.00
+    nome: "LUCAS",
+    sabor: "Portuguesa",
+    tamanho: "5",
+    quantidade: 1
   },
   {
-    data: '2021-03-30',
-    descricao: 'pagamento',
-    valor: 2500.00
+    nome: "LUCAS",
+    sabor: "Portuguesa",
+    tamanho: "5",
+    quantidade: 1
   }
 ]
 
