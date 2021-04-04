@@ -41,7 +41,7 @@ app.route('/extrato').get(
 
 app.route('/lancamento').get(
   (req, res) => {
-    res.status(200).write("LANÇAMENTO")
+    res.status(200).send("LANÇAMENTO")
   }
 )
 
