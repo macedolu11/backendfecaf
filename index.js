@@ -49,10 +49,10 @@ app.route('/reset').get(
     let dropCreatTable = "";
     dropCreatTable += "DROP TABLE IF EXISTS lancamentos; ";
     dropCreatTable += "CREATE TABLE lancamentos(";
-    dropCreatTable += "nome char(50), "
-    dropCreatTable += "sabor char(150), "
-    dropCreatTable += "tamanho char(130), "
-    dropCreatTable += "quantidade char(10) "
+    dropCreatTable += "nome varchar(50), "
+    dropCreatTable += "sabor varchar(150), "
+    dropCreatTable += "tamanho varchar(130), "
+    dropCreatTable += "quantidade varchar(10) "
     dropCreatTable += ");";
 
     pool.query(dropCreatTable, (err, dbres) => {
