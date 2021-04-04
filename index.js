@@ -41,11 +41,13 @@ const lancamentos = [
 
 app.route('/extrato').get( 
   (req, res) => {
-    res.status(200).json(
-        lancamentos
-      )
-  }
-)
+    let querySelectAll = "SELECT * from lancamentos"
+    pool.query(querySelectAll, (err, dbres) => {
+      console.log("Error: " + err)
+      res.status(200).json(dbres.rows)
+    });
+
+  })
 
 app.route('/reset').get(
   (req, res) => {
@@ -65,10 +67,16 @@ app.route('/reset').get(
     });
   });
 
-  
+
 app.route('/lancamento').get(
   (req, res) => {
-    res.status(200).send("LANÇAMENTO")
+    console.log(req.body)
+    // let querySelectAll = "INSERT INTO lancamentos(nome,sabor,tamanho,quantidade) VALUES ()"
+    // pool.query(querySelectAll, (err, dbres) => {
+    //   console.log("Error: " + err)
+      res.status(200).json(dbres.rows)
+    // });
+    
   }
 )
 
