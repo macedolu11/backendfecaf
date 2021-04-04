@@ -9,12 +9,28 @@ const app = express();
 
 
 app.set("port", port)
-
+const lancamentos = [
+  {
+    data: '2021-03-10',
+    descricao: 'pagamento',
+    valor: 2500.00
+  },
+  {
+    data: '2021-03-15',
+    descricao: 'mercado',
+    valor: 2500.00
+  },
+  {
+    data: '2021-03-30',
+    descricao: 'pagamento',
+    valor: 2500.00
+  }
+]
 
 app.route('/extrato').get(
   (req, res) => {
     res.status(200).json(
-      {'b': 'as'}
+        lancamentos
       )
   }
 )
