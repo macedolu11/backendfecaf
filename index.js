@@ -3,7 +3,7 @@ const path = require('path');
 const config = require("config")
 
 
-const port = process.env.PORT || config.set("server.port");
+const port = process.env.PORT || config.get("server.port");
 
 const app = express();
 
