@@ -4,16 +4,13 @@ const config = require("config")
 const pg = require("pg")
 const jwt = require('jsonwebtoken')
 const bodyParser = require("body-parser");
-const uri = config.get("bd.uri")
-const secret = config.get("jwt.secret")
-
 
 const app = express();
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 
 const pool = new pg.Pool({
-  connectionString: uri,
+  connectionString: 'postgres://prkdhhgasrebsu:0481eb0c3ca0e5831799027422f761b66b307da385ab3fabc98f5bc32c3f946a@ec2-54-196-33-23.compute-1.amazonaws.com:5432/d8spculdfeicsn',
   ssl:{
     rejectUnauthorized: false
   }
@@ -23,7 +20,7 @@ const pool = new pg.Pool({
 
 const port = process.env.PORT || config.get("server.port");
 
-
+const JWT_SECRET = "DNASKJNDKJASD AKJDNBFAJHBFJHDSABFA"
 
 
 app.set("port", port)
@@ -114,7 +111,7 @@ app.route('/login').post((req,res) =>{
           perfil: row.perfil,
           nome: row.nome
         }
-        const token = jwt.sign(payload, secret)
+        const token = jwt.sign(payload, JWT_SECRET)
         const objToken = {token}
         res.status(200).json(objToken);
       } else {
