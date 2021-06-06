@@ -98,6 +98,10 @@ app.route('/lancamento').post(
 
 
 app.route('/login').post((req,res) =>{
+  console.log(`
+    ${req.body.usuario}
+    ${req.body.senha}
+  `)
   let qry = `SELECT * FROM usuarios WHERE usuario = '${req.body.usuario}'`
   qry += ` AND senha  = '${req.body.senha}'`
   pool.query(qry, (err, dbres) =>{
